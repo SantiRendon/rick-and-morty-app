@@ -28,15 +28,11 @@
   <h1 class="title">Rick and Morty: Sveltekit</h1>
   
   <article class="content">
-    <article class="btns">
-      <button class="btn" on:click={previousPage} disabled={pageNum === 1}
-        >Previous</button
-      >
-      <button class="btn" on:click={nextPage} disabled={pageNum === 42}
-        >Next</button
-      >
-    </article>
-  
+    <section class="btns">
+      <button class="btn" on:click={previousPage} disabled={pageNum === 1}>Previous</button>
+      <input type="search" name="search" id="search" class="search" placeholder="Search...">
+      <button class="btn" on:click={nextPage} disabled={pageNum === 42}>Next</button>
+    </section>
     <section class="grid">
       {#each characters as character}
         <Character {character} />
@@ -45,6 +41,7 @@
   </article>
   
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Emoji&display=swap');
     .title {
       font-size: 2.7rem;
       font-weight: bolder;
@@ -54,15 +51,33 @@
     .btns {
       display: flex;
       justify-content: space-between;
+      padding-bottom: 15px;
     }
   
     .btn {
       padding: 5px 10px;
-      margin: 0 0 15px 0;
       border: 1px solid whitesmoke;
       border-radius: 5px;
       background: wheat;
       font-weight: bold;
+    }
+
+    .search{
+      appearance: none;
+      width: 25%;
+      height: 2.5rem;
+      border-radius: 5px;
+    }
+    .search:focus{
+      /* appearance: none; */
+      transition: background ease-out .5s;
+      background: #FAEEBC;
+    }
+
+    .search::-webkit-search-cancel-button{
+      padding: 5px;
+      margin-right: .5rem ;
+      cursor: pointer;
     }
   
     .btn:hover:not(button[disabled]) {
