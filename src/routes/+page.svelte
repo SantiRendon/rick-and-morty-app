@@ -1,5 +1,6 @@
 <script>
     import Character from "$lib/Character.svelte";
+    import Search from "$lib/Search.svelte";
     let characters = [];
     let pageNum = 1;
     async function loadCharacters() {
@@ -30,7 +31,7 @@
   <article class="content">
     <section class="btns">
       <button class="btn" on:click={previousPage} disabled={pageNum === 1}>Previous</button>
-      <input type="search" name="search" id="search" class="search" placeholder="Search...">
+      <Search/>
       <button class="btn" on:click={nextPage} disabled={pageNum === 42}>Next</button>
     </section>
     <section class="grid">
@@ -60,24 +61,6 @@
       border-radius: 5px;
       background: wheat;
       font-weight: bold;
-    }
-
-    .search{
-      appearance: none;
-      width: 25%;
-      height: 2.5rem;
-      border-radius: 5px;
-    }
-    .search:focus{
-      /* appearance: none; */
-      transition: background ease-out .5s;
-      background: #FAEEBC;
-    }
-
-    .search::-webkit-search-cancel-button{
-      padding: 5px;
-      margin-right: .5rem ;
-      cursor: pointer;
     }
   
     .btn:hover:not(button[disabled]) {
